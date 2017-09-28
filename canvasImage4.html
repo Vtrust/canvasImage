@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        img {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="image/image_1.jpg" id="img" />
+    <canvas width="450" height="300" id="canvas"></canvas>
+    <script src="js/gauss.js"></script>
+    <script>
+        var img = document.getElementById('img');
+        img.crossOrigin="anonymous";
+        img.onload = function () {
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, 450, 300);
+            var data = ctx.getImageData(225, 0, 450, 300);
+            var emptyData = ctx.createImageData(225, 300);
+            emptyData = gaussBlur(data);
+            ctx.putImageData(emptyData, 225, 0);
+        }
+    </script>
+</body>
+</html>

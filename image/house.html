@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="canvas" style="margin: 0 auto;display: block"></canvas>
+
+<script>
+    window.onload=function () {
+        var canvas=document.getElementById("canvas");
+        var context=canvas.getContext("2d");
+        canvas.width= document.body.clientWidth;
+        canvas.height=document.body.clientHeight;
+
+
+
+        drawRect(context,100,100,16*50,5*50,4,'#000');
+        function drawRect(cxt,x,y,width,height,borderWidth,borderColor){
+            cxt.beginPath();
+            cxt.rect(x,y,width,height);
+            cxt.lineWidth=borderWidth;
+            cxt.strokeStyle=borderColor;
+            cxt.stroke();
+        }
+    }
+</script>
+</body>
+</html>
